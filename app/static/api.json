@@ -1,0 +1,71 @@
+{
+    "openapi": "3.0.0,",
+    "info": {
+      "version": "1.0.0",
+      "title": "Amazon Review Helpfulness Predictor",
+      "description": "An API for predicting usefulness of an Amazon review based on textual content"
+    },
+    "paths": {
+      "/predict": {
+        "post": {
+          "description": "Generates prediction of a given review",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "required": true,
+              "description": "Review object for scoring",
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "review"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Good product"
+                  },
+                  "review": {
+                    "type": "string",
+                    "example": "This was a good product."
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Predicted label for a given review (successful operation)",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "prediction": {
+                    "type": "string",
+                    "example": "HELPFUL"
+                  },
+                  "language_detected": {
+                    "type": "string",
+                    "example": "en"
+                  },
+                  "disclaimer": {
+                    "type": "string",
+                    "example": "Prediction not accurate for non-English reviews"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Invalid input (must specify summary and review, and at least one must not be blank)"
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,10 @@
+.vscode
+**/__pycache__
+mlruns/*
+data/*
+data_old/*
+artifacts/*
+**/*.bin
+!.gitkeep
+notes.md
+run.sh
