@@ -6,6 +6,7 @@ matplotlib==3.3.4
 mlflow==1.14.1
 numpy==1.19.5
 pandas==1.2.3
+pytest==6.2.2
 scikit-learn==0.24.1
 scipy==1.6.1
 spacy==2.3.5
