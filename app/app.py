@@ -41,6 +41,10 @@ def get_docs():
     return render_template("swaggerui.html")
 
 
+# For getting the predicted label of a user-provided review
+# The user should supply both the title and review (one of which can be left blank, but not both)
+# and the API returns the predicted label (helpful vs not helpful), language detected
+# and a disclaimer that the model is not accurate for non-English reviews
 @app.route("/predict", methods=["POST"])
 def api():
     input_data = request.json
