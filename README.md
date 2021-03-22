@@ -10,8 +10,13 @@ Data source: https://nijianmo.github.io/amazon/index.html
 - `mlruns/`: used by `mlflow`, which was the tool for tracking results of experiments
 - `src/`: code for data prep and modeling (`data_prep` and `models` subfolders, respectively). See `run.sh` for the order of execution of the pipeline
 - `tests/`: tests for scripts in `src`
+- `requirements.txt`: lists dependencies
+- `run.sh`: bash script for running the data processing and model development pipeline
 
 ## How to Run
+
+To run the data processing and model development steps, first install the dependencies listed under `requirements.txt`, then follow `run.sh`.
+
 To run the app with Docker, use the following commands:
 
 ```
@@ -20,4 +25,8 @@ docker build -t reviews_app .
 docker run -p 8080:8080 -d reviews_app
 ```
 
-To run the data processing and model development steps, first install the dependencies outlined in `requirements.txt`, then follow `run.sh`.
+API documentation can be found at the "docs" endpoint:
+<img src="assets/api_documentation.jpg" width="600">
+
+To obtain a prediction with a POST request using Postman:
+<img src="assets/request.jpg" width="600">
