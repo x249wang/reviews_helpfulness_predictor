@@ -1,3 +1,4 @@
+# Defines and loads the best performing feedforward classifier model
 import torch
 import torch.nn as nn
 
