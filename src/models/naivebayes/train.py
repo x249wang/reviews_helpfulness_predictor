@@ -1,3 +1,5 @@
+# Trains Naive Bayes model and evaluates it on a validation set
+#
 import numpy as np
 import argparse
 from scipy.sparse import load_npz

@@ -1,3 +1,6 @@
+# Defines the model architecture for the feedforward classifier network
+# It contains 2 layers, with a ReLU activation after the first layer and
+# dropout applied after the first linear layer
 import torch
 import torch.nn as nn
 

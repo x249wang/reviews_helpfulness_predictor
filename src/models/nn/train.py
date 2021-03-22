@@ -1,3 +1,7 @@
+# Trains feedforward classifier model and evaluates it on a validation set
+# Train and validation loss (cross entropy) progression is logged to tensorboard
+# Only the best model (by validation loss) is saved
+# Model performance logged to mlflow
 import argparse
 import os
 import numpy as np

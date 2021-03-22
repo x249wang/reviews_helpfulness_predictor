@@ -1,3 +1,4 @@
+# Evaluates trained feedforward classifier network on held-out test set
 import argparse
 import numpy as np
 import torch

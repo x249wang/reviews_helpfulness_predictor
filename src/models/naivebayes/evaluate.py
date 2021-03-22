@@ -1,3 +1,4 @@
+# Evaluates trained Naive Bayes model on held-out test set
 import joblib
 import argparse
 from scipy.sparse import load_npz

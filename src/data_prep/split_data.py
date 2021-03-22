@@ -1,3 +1,5 @@
+# Split full dataset into train/validation/test sets, with the option to
+# downsample the training set in case of class imbalance
 import swifter
 import pandas as pd
 import fasttext

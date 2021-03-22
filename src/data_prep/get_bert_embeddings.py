@@ -1,3 +1,4 @@
+# Retrieves BERT sentence embeddings from review text
 import numpy as np
 import pandas as pd
 import argparse
@@ -7,6 +8,12 @@ import src.data_prep.config as config
 from src.logger import logger
 
 
+# Tokenizes and obtains word embeddings for a list of review text, and obtain
+# the average of word embeddings per line of text as the sentence embedding
+# Took the values from the second to last hidden layer of each token to produce
+# a 768-d vector per token, then applied the average to obtain a 768-d vector
+# sentence representation
+# Reference: https://mccormickml.com/2019/05/14/BERT-word-embeddings-tutorial/#sentence-vectors
 def get_sentence_embeddings(tokenizer, model, text_list):
     result = tokenizer.batch_encode_plus(text_list, padding=True, return_tensors="pt")
     result["input_ids"] = result["input_ids"][:, : config.max_sequence_length]

@@ -1,3 +1,4 @@
+# Retrieves tf-idf vectors from review text
 import re
 import numpy as np
 import pandas as pd
@@ -9,6 +10,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from src.logger import logger
 
 
+# Obtains lemmatized tokens with stopwords and punctuations removed
 def custom_lemmatized_tokenizer(texts):
     docs = nlp.pipe(texts)
 
@@ -22,6 +24,8 @@ def custom_lemmatized_tokenizer(texts):
     return results
 
 
+# Helper generator function to load text data by line
+# (to avoid loading all into memory at once)
 def make_corpus(filepath):
     for line in open(filepath, "r"):
         yield line

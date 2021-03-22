@@ -1,3 +1,5 @@
+# Custom dataset class for loading embeddings data and labels, and converting
+# them into torch tensors
 import numpy as np
 import torch
 from torch.utils.data import Dataset

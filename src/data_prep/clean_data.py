@@ -1,3 +1,4 @@
+# Cleans data (csv format) and writes to another csv file
 import pandas as pd
 import fasttext
 import argparse
@@ -5,6 +6,8 @@ import src.data_prep.utils as utils
 import src.data_prep.config as config
 from src.logger import logger
 
+# Language detection model trained by FastText
+# Source: https://towardsdatascience.com/benchmarking-language-detection-for-nlp-8250ea8b67c
 lang_detection_model = fasttext.load_model(config.lang_detection_model_path)
 
 if __name__ == "__main__":

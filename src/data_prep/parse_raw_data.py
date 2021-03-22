@@ -1,3 +1,4 @@
+# Parses raw data (.json.gz format) to tabular format (csv file), in chunks
 import src.data_prep.config as config
 import argparse
 import pandas as pd

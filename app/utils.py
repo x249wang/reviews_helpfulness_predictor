@@ -20,6 +20,7 @@ bert = DistilBertModel.from_pretrained(
 bert.eval()
 
 
+# Detects language of the review text
 def detect_language(text):
     try:
         language = detect(text)
@@ -28,6 +29,8 @@ def detect_language(text):
         return "N/A"
 
 
+# Cleans review text by removing extra whitespace, newline characters and tabs,
+# and converting everything to lower case
 def clean_text(summary, review_text):
     combined_text = (
         re.sub("\n|\t|\s+", " ", summary.lower().strip())
@@ -42,6 +45,7 @@ def clean_text(summary, review_text):
     return combined_text
 
 
+# Retrieve sentence embeddings for given (cleaned) text
 def get_sentence_embeddings(text):
     result = tokenizer.batch_encode_plus([text], return_tensors="pt")
     result["input_ids"] = result["input_ids"][:, :MAX_SEQUENCE_LENGTH]
@@ -53,12 +57,14 @@ def get_sentence_embeddings(text):
     return torch.mean(token_embeddings, dim=1)
 
 
+# Get model predicted label from sentence embeddings
 def inference_from_embeddings(embeddings, threshold):
     output = classifier(embeddings)
     predicted_probabilities = F.softmax(output, dim=1).detach().numpy()
     return "HELPFUL" if predicted_probabilities[0, 1] >= threshold else "NOT HELPFUL"
 
 
+# Wrapper to generate model prediction from (cleaned) text
 def generate_prediction_from_text(text):
     embeddings = get_sentence_embeddings(text)
     predicted_label = inference_from_embeddings(embeddings, THRESHOLD)

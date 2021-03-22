@@ -1,3 +1,5 @@
+# Performs hyperparameter tuning on the feedforward classifier model
+# by launching training jobs (i.e. train.py) with different parameter choices
 import argparse
 from subprocess import check_call
 import sys
